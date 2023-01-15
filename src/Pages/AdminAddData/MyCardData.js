@@ -7,6 +7,7 @@ const Swal = require('sweetalert2')
 const MyCardData = ({products,refetch}) => {
     const { user } = useContext(AuthContext)
 
+
 const DeleteItem=(id)=>{
     fetch(`https://srilanka-tourist-server.vercel.app/cartId/${id}`, {
         method: 'DELETE',
@@ -17,10 +18,11 @@ const DeleteItem=(id)=>{
     .then(res => res.json())
     .then(result => {
         console.log(result);
+        alert("are you sure deleted")
+
         toast.success('Tourist deleted successfully');
         refetch()
           });
-
 }
 
 
