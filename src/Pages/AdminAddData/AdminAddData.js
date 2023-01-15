@@ -19,7 +19,7 @@ const AdminAddData = () => {
     const { data: products=[],refetch } = useQuery({
         queryKey: ['bookingData', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookingData?email=${user?.email}`)
+            const res = await fetch(`https://srilanka-tourist-server.vercel.app/bookingData?email=${user?.email}`)
             const data = await res.json()
             return data;
         }
@@ -47,7 +47,7 @@ const AdminAddData = () => {
                         userEmail: user?.email,
                         productDetails: data.productDetails,
                     }
-                    fetch(`http://localhost:5000/cartData?email=${user?.email}`, {
+                    fetch(`https://srilanka-tourist-server.vercel.app/cartData?email=${user?.email}`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

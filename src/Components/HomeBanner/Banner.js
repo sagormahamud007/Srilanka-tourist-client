@@ -54,7 +54,7 @@ const Banner = () => {
     const {data:items=[],refetch}=useQuery({
         queryKey:["bannerData"],
         queryFn:async ()=>{
-            const res = await fetch('http://localhost:5000/cartData')
+            const res = await fetch('https://srilanka-tourist-server.vercel.app/cartData')
             const data = await res.json()
             return data
         }

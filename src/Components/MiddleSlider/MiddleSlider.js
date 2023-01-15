@@ -18,7 +18,7 @@ const MiddleSlider = () => {
 const { data: dataItem=[],refetch } = useQuery({
   queryKey: ['bookingData'],
   queryFn: async () => {
-      const res = await fetch('http://localhost:5000/middleData')
+      const res = await fetch('https://srilanka-tourist-server.vercel.app/middleData')
       const data = await res.json()
       return data;
   }

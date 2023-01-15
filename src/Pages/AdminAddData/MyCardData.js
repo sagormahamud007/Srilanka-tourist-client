@@ -8,7 +8,7 @@ const MyCardData = ({products,refetch}) => {
     const { user } = useContext(AuthContext)
 
 const DeleteItem=(id)=>{
-    fetch(`http://localhost:5000/cartId/${id}`, {
+    fetch(`https://srilanka-tourist-server.vercel.app/cartId/${id}`, {
         method: 'DELETE',
         headers: {
             'content-type': 'application/json',
@@ -17,7 +17,6 @@ const DeleteItem=(id)=>{
     .then(res => res.json())
     .then(result => {
         console.log(result);
-        alert("Are you sure deleted");
         toast.success('Tourist deleted successfully');
         refetch()
           });
@@ -25,8 +24,9 @@ const DeleteItem=(id)=>{
 }
 
 
-const UpdateItem=(id,product)=>{
-    fetch(`http://localhost:5000//reportProduct/${id}`, {
+const UpdateItem=(product,id)=>{
+    console.log(product)
+    fetch(`https://srilanka-tourist-server.vercel.app//reportProduct/${id}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -39,7 +39,6 @@ const UpdateItem=(id,product)=>{
         toast.success('Tourist Name Update');
         refetch()
           });
-
 }
 
 
@@ -79,7 +78,7 @@ const UpdateItem=(id,product)=>{
                                         <button onClick={()=>DeleteItem(product._id)} className="btn btn-sm btn-outline">Delete</button>
                                     </th>
                                     <th>
-                                        <button onClick={()=>UpdateItem(product)} className="btn btn-sm btn-outline">Update</button>
+                                        <button onClick={()=>UpdateItem(product, product._id)} className="btn btn-sm btn-outline">Update</button>
                                     </th>
                                 </tr>
                             ))}
