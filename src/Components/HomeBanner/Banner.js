@@ -14,7 +14,6 @@ import "../HomeBanner/Style/Styels.css";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
-import Navbar from '../../Shere/Navbar';
 import BannerCategory from '../BannerCategory/BannerCategory';
 
 const Banner = () => {
@@ -60,7 +59,7 @@ const Banner = () => {
         }
     
     })
-
+    
     refetch()
     const [images,setImages]=useState(null)
 
@@ -68,11 +67,19 @@ const Banner = () => {
 
     return (
     
-         
-      <div className='flex items-center flex-col lg:flex-row overflow-hidden'>
-        <div className="hero min-h-screen" style={{ backgroundImage: `url(${images ? images : items[0]?.image})` }}>
- 
-<div className='w-1/2 ml-auto'>
+      <div className="hero min-h-screen  overflow-hidden" style={{ backgroundImage: `url(${images ? images : items[0]?.image})` }}>
+        <div className="hero-overlay bg-opacity-60 "></div>
+      <div className="hero-content flex-col lg:flex-row">
+      <div>
+        <h1 className="mb-5 text-5xl font-bold text-white">WELCOME TO <br/></h1>
+      <h2><span className='mt-5 text-5xl font-bold text-blue-200 mb-5'>SRI LANKA</span></h2>
+          <p className="py-6 text-white">Lorem ipsum dolor sit amet, consectetur 
+      adipisicing elit. Eligendi non quis exercitationem culpa
+       nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab
+        temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates 
+        voluptas?</p>
+          <button className="btn btn-outline text-white mt-5 px-20">Explore</button>
+        </div>
 <Swiper
   onSwiper={setSwiperRef}
   slidesPerView={3}
@@ -101,51 +108,10 @@ const Banner = () => {
    ></BannerCategory> </SwiperSlide>)
       
     }
-     
 </Swiper>
-</div>
-<div className="hero-overlay bg-opacity-60"></div>
-  <div className="hero-content grid lg:grid-cols-2 md:grid-cols-1  text-neutral-content">
-    <div className="">
-      <h1 className="mb-5 text-5xl font-bold">WELCOME TO <br/></h1>
-      <h2><span className='mt-5 text-5xl font-bold text-blue-200 mb-5'>SRI LANKA</span></h2>
-      <p className="mt-5">Lorem ipsum dolor sit amet, consectetur 
-      adipisicing elit. Eligendi non quis exercitationem culpa
-       nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab
-        temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates 
-        voluptas? </p>
-      <button className="btn btn-outline text-white mt-5 px-20">Explore</button>
+      </div>
     </div>
-    </div>
-    </div>
-</div>
-
-  
-
-  
-
-/* //     <div className="max-w-md">
-//     <div className="carousel w-full mt-40 ml-20"> */
-//  {
-//     slider &&
-//     slider.map((sliderImg)=>
-//     <>
-//    <div id={`slide${sliderImg.id}`}   className="carousel-item relative w-full mb-0">
-//     <img  src={sliderImg.image} className="w-full" alt=''/>
-//     <div onClick={()=>setImages(sliderImg?.image)} className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-     
-//       <a onClick={()=>setImages(sliderImg?.image)} href={`#slide${sliderImg.prev}`} className="btn btn-circle">❮</a> 
-//       <a onClick={()=>setImages(sliderImg?.image)} href={`#slide${sliderImg.next}`} className="btn btn-circle">❯</a>
-//     </div>
-//     </div> 
-//     </>
-//     )
-//  }
-//   </div>
-// </div>
-//     </div>
-//   </div>
-// </div>
-    );
-};
+     );
+    };
+   
 export default Banner;

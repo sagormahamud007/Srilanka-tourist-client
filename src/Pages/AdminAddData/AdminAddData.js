@@ -5,25 +5,16 @@ import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../AuthContext/ContextProvider';
-import MyCardData from './MyCardData';
 
 
 const AdminAddData = () => {
-
     const { user } = useContext(AuthContext)
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
     const navigate = useNavigate()
     const imgKey = process.env.REACT_APP_imageKey;
 
 
-    const { data: products=[],refetch } = useQuery({
-        queryKey: ['bookingData', user?.email],
-        queryFn: async () => {
-            const res = await fetch(`https://srilanka-tourist-server.vercel.app/bookingData?email=${user?.email}`)
-            const data = await res.json()
-            return data;
-        }
-    });
+   
 
     const handleAddProducts = (data) => {
     
@@ -57,7 +48,6 @@ const AdminAddData = () => {
                         .then(res => res.json())
                         .then(result => {
                             console.log(result);
-                            refetch()
                             reset({
                                 userEmail: "",
                                 password: "",
@@ -66,8 +56,8 @@ const AdminAddData = () => {
                                 product_name: "",
                                 productDetails: "",
                               });
-                              
                             toast.success('Tourist add successfully');
+                            navigate('/dashboard')
                         })
                 }
             })
@@ -115,11 +105,6 @@ const AdminAddData = () => {
                 </div>
                 <input className='btn btn-accent w-full  mx-auto' value="Add Your Data" type="submit" />
             </form>
-
-            <MyCardData
-            products={products}
-            refetch={refetch}
-            ></MyCardData>
         </div>
 
     );

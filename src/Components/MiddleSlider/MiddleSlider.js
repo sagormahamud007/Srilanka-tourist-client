@@ -54,7 +54,7 @@ refetch()
       </Swiper>
  <div className='ml-6'>
      <h1 className='text-6xl font-bold mb-5'> EXPLORE <br></br><span className='mb-10'> THE ISLAND</span></h1> <p className='mb-5'>Each place and each smile in Sri Lanka has a      story to tell. We have so much to share with you.3      so come along to our island in paradise</p>      
-     <button className="btn btn-active btn-primary border-none px-20">Button</button>
+     <button className="btn btn-active btn-primary border-none px-20">Explore</button>
 </div>
       </div>
 

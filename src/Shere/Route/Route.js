@@ -7,13 +7,17 @@ import SignUp from "../../Pages/SignUp/SignUp";
 import SignIn from "../../Pages/SignIn/Login";
 import AdminAddData from "../../Pages/AdminAddData/AdminAddData";
 import PrivateRoute from "../PrivateRouter/PrivateRouter";
+import DashboardLayout from "../../Pages/Dashboard/DashboardLayout";
+import ErrorPage from "../../Pages/Dashboard/ErrorPage";
 import MyCardData from "../../Pages/AdminAddData/MyCardData";
+import TouristDetails from "../../Pages/TouristDetails/TouristDetails";
 
 
 
  export const router = createBrowserRouter([
   {
     path: '/',
+    errorElement: <ErrorPage></ErrorPage>,
     element: <Layout></Layout>,
     children: ([
         {
@@ -30,14 +34,29 @@ import MyCardData from "../../Pages/AdminAddData/MyCardData";
             element:<SignIn></SignIn>
         },
         {
-            path:"/adminAddData",
-            element:<PrivateRoute><AdminAddData></AdminAddData></PrivateRoute>
-        },
-        {
-            path:'/bookingData',
-            element:<MyCardData></MyCardData>
+            path:"/touristDetails/:id",
+            element: <PrivateRoute><TouristDetails></TouristDetails></PrivateRoute>,
+            loader: ({ params }) => fetch(`localhost:5000/cartData/${params.id}`)
         }
+      
     ]),
     
  },
+ {
+    path: '/dashboard',
+    element: <PrivateRoute>
+<DashboardLayout></DashboardLayout>
+    </PrivateRoute>,
+    children: [
+       {
+        path:'/dashboard',
+       element:<MyCardData></MyCardData>
+       },
+       {
+        path:"/dashboard/adminAddData",
+        element:<AdminAddData></AdminAddData>
+    },
+    ]
+}
+
 ]);

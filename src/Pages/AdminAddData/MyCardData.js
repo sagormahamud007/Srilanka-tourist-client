@@ -4,9 +4,17 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../AuthContext/ContextProvider';
 const Swal = require('sweetalert2')
 
-const MyCardData = ({products,refetch}) => {
+const MyCardData = () => {
     const { user } = useContext(AuthContext)
 
+    const { data: products=[],refetch } = useQuery({
+        queryKey: ['bookingData', user?.email],
+        queryFn: async () => {
+            const res = await fetch(`https://srilanka-tourist-server.vercel.app/bookingData?email=${user?.email}`)
+            const data = await res.json()
+            return data;
+        }
+    });
 
 const DeleteItem=(id)=>{
     fetch(`https://srilanka-tourist-server.vercel.app/cartId/${id}`, {
@@ -47,6 +55,7 @@ const UpdateItem=(product,id)=>{
 
     return (
         <div className='mt-5'>
+             <label htmlFor="Dashboard-drawer" className="btn btn-sm ml-5 lg:hidden drawer-button">Open drawer</label>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -87,6 +96,7 @@ const UpdateItem=(product,id)=>{
                     </tbody>
                 </table>
             </div>
+           
         </div>
     );
 };
