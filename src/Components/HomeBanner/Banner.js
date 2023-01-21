@@ -15,6 +15,7 @@ import "../HomeBanner/Style/Styels.css";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import BannerCategory from '../BannerCategory/BannerCategory';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     const [swiperRef, setSwiperRef] = useState(null);
@@ -63,14 +64,12 @@ const Banner = () => {
     refetch()
     const [images,setImages]=useState(null)
 
-  
-
     return (
     
-      <div className="hero min-h-screen  overflow-hidden" style={{ backgroundImage: `url(${images ? images : items[0]?.image})` }}>
-        <div className="hero-overlay bg-opacity-60 "></div>
-      <div className="hero-content flex-col lg:flex-row">
-      <div>
+      <div className=" place-items-center bg-cover bg-center min-h-screen overflow-hidden" style={{ backgroundImage: `url(${images ? images : items[0]?.image})` }}>
+       <div className="hero-overlay h-100 py-32 bg-opacity-70">
+      <div className="hero-content flex-col lg:flex-row ">
+      <div className='w-2/2'>
         <h1 className="mb-5 text-5xl font-bold text-white">WELCOME TO <br/></h1>
       <h2><span className='mt-5 text-5xl font-bold text-blue-200 mb-5'>SRI LANKA</span></h2>
           <p className="py-6 text-white">Lorem ipsum dolor sit amet, consectetur 
@@ -78,11 +77,12 @@ const Banner = () => {
        nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab
         temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates 
         voluptas?</p>
-          <button className="btn btn-outline text-white mt-5 px-20">Explore</button>
+          <button className="btn btn-outline px-24 text-white mt-5">Explore</button>
         </div>
+        
 <Swiper
   onSwiper={setSwiperRef}
-  slidesPerView={3}
+  slidesPerView={2}
   centeredSlides={true}
   spaceBetween={30}
   pagination={{
@@ -102,13 +102,15 @@ const Banner = () => {
       
       items.map(item=>
    <SwiperSlide> <BannerCategory
-   key={item.id}
+   key={item._id}
    item={item}
    setImages={setImages}
-   ></BannerCategory> </SwiperSlide>)
+   >
+    </BannerCategory> </SwiperSlide>)
       
     }
 </Swiper>
+</div>
       </div>
     </div>
      );

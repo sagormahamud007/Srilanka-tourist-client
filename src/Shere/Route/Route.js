@@ -34,9 +34,9 @@ import TouristDetails from "../../Pages/TouristDetails/TouristDetails";
             element:<SignIn></SignIn>
         },
         {
-            path:"/touristDetails/:id",
+            path:'/Details/:id',
             element: <PrivateRoute><TouristDetails></TouristDetails></PrivateRoute>,
-            loader: ({ params }) => fetch(`localhost:5000/cartData/${params.id}`)
+            loader: ({ params }) => fetch(`http://localhost:5000/Data/${params.id}`)
         }
       
     ]),

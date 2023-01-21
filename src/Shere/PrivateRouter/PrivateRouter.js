@@ -14,7 +14,9 @@ const PrivateRoute = ({children}) => {
     }
 
     if(loading){
-        return <h3>Loading...</h3>
+        return <div className='flex justify-center py-60 relative mt-44'>
+            <progress className="progress w-56"></progress>
+        </div>
     }
 
     return <Navigate to={'/signIn'} 

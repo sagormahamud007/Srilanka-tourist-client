@@ -47,7 +47,7 @@ refetch()
         
         {
   dataItem.map(items=><SwiperSlide><MiddleItem 
-  key={items.id}
+  key={items._id}
   items={items}
   ></MiddleItem></SwiperSlide>)
 }
