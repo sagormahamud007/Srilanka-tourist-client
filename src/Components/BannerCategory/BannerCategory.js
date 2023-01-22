@@ -13,7 +13,7 @@ const BannerCategory = ({item,setImages}) => {
           <p className="mb-0">{description}</p>
         </div>
       </div>
-      <Link to={`/Details/${item._id}`} className="btn btn-active btn-ghost absolute top-0 left-0 py-5 w-full rounded-none">View Details</Link>
+      <Link to={`/Details/:${item._id}`} className="btn btn-active btn-ghost absolute top-0 left-0 py-5 w-full rounded-none">View Details</Link>
       </div>
     );
 };

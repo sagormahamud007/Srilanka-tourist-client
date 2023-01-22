@@ -14,6 +14,7 @@ import TouristDetails from "../../Pages/TouristDetails/TouristDetails";
 
 
 
+
  export const router = createBrowserRouter([
   {
     path: '/',
@@ -34,9 +35,9 @@ import TouristDetails from "../../Pages/TouristDetails/TouristDetails";
             element:<SignIn></SignIn>
         },
         {
-            path:'/Details/:id',
+            path:'Details/:id',
             element: <PrivateRoute><TouristDetails></TouristDetails></PrivateRoute>,
-            loader: ({ params }) => fetch(`http://localhost:5000/Data/${params.id}`)
+            loader: ({ params }) =>fetch (`http://localhost:5000/cartData/${params.id}`)
         }
       
     ]),
